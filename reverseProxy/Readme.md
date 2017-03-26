@@ -57,7 +57,24 @@ Create a second test server, we will create a node.js server
   -sudo mkdir node
   -cd node
   -sudo nano server.js
-  Copy this:
+  Copy this, this will create a http server in port 8080
+  
+  var http = require('http');
+  const PORT=8080; 
+
+  function handleRequest(request, response){
+    response.end('Almost Done !! Path Hit: ' + request.url);
+  }
+
+  var server = http.createServer(handleRequest);
+
+  server.listen(PORT, function(){
+    console.log("Server listening on: http://localhost:%s", PORT);
+  });
+  
+  -Save the file ctrl + x / Y / Enter
+  -Test your server http://Droplet_IP:8080
+  
   
   
   
