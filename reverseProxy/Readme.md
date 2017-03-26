@@ -113,10 +113,25 @@ Config the Apache Reverse Proxy for http
   ### Reverse Proxy server Part3 ( with SSL )<br> 
 ```js
 Config the Apache Reverse Proxy for https
+  -cd /etc/apache2/sites-available/
   -sudo nano 000-default-le-ssl.conf
   -You will see the SSL certificates from Letsencrypt. DO NOT DELETE THEM.
   -Your File should looks like this
   // ###############################
+  <IfModule mod_ssl.c>
+  <VirtualHost *:443>
+        SSLEngine On
+        ProxyPass / http://45.55.138.132:8080/
+        ProxyPassReverse / http://45.55.138.132:8080/
+
+    SSLCertificateFile /etc/letsencrypt/live/xxx.domain.com/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/xxx.domain.com/privkey.pem
+    Include /etc/letsencrypt/options-ssl-apache.conf
+    ServerName t
+    SSLCertificateChainFile /etc/letsencrypt/live/xxx.domain.com/chain.pem
+
+  </VirtualHost>
+  </IfModule>
   
   // ###############################
   -Save the file ctrl + x / Y / Enter
