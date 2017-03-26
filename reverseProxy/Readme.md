@@ -1,4 +1,4 @@
-# Install Reverse Proxy Apache with SSL with Letsencrypt<br>in DigitalOcean.com
+# Install Apache Reverse Proxy with Letsencrypt SSL<br>on DigitalOcean.com
 
 ### Digital Ocean Droplet<br>
 ```js
@@ -40,7 +40,28 @@
 ```
 ### Reverse Proxy server<br>
 ```js
-  -Create a test server
+Create a second test server, we will create a node.js server
+  -Create Droplet
+  -LAMP 14.04.05 x64
+  -5/mo
+  -NY 3
+  -hostname: Node1
+  
+  -Get your pass, from email.
+  -Terminal: shh root@Droplet_IP
+  -Change Password
+  
+  -curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  -sudo apt-get install -y build-essential
+  -sudo apt-get install -y nodejs
+  -sudo mkdir node
+  -cd node
+  -sudo nano server.js
+  Copy this:
+  
+  
+  
+  
    
 
 
