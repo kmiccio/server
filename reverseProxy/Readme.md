@@ -38,7 +38,7 @@
   -Check your https://xxx.domain.com
   -Everything should go fine until this point.
 ```
-### Reverse Proxy server<br>
+### Reverse Proxy server Part1<br>
 ```js
 Create a second test server, we will create a node.js server
   -Create Droplet
@@ -59,6 +59,7 @@ Create a second test server, we will create a node.js server
   -sudo nano server.js
   Copy this, this will create a http server in port 8080
   
+  // ##########################################
   var http = require('http');
   const PORT=8080; 
 
@@ -71,20 +72,57 @@ Create a second test server, we will create a node.js server
   server.listen(PORT, function(){
     console.log("Server listening on: http://localhost:%s", PORT);
   });
+  // ##########################################
   
   -Save the file ctrl + x / Y / Enter
+  -sudo node server.js
   -Test your server http://Droplet_IP:8080
   
-  
-  
-  
-  
-   
-
-
-  
-  
-  
+```
+  ### Reverse Proxy server Part2 ( no SSL )<br>
 ```js
-HELLO
+Config the Apache Reverse Proxy for http
+  -Go back to your Proxy1 Terminal
+  -aptitude update
+  -aptitude -y upgrade
+  -aptitude install -y build-essential
+  -aptitude install -y libapache2-mod-proxy-html libxml2-dev
+  -a2enmod
+    - ...wildcards : proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
+    
+  -cd /etc/apache2/sites-available/
+  -sudo nano 000-default.conf
+  -Delete everything and copy this
+  
+  // ###############################
+  <VirtualHost *:80>
+        ProxyPreserveHost On
+
+        ProxyPass / http://Node1_Droplet_IP:8080/
+        ProxyPassReverse / http://Node1_Droplet_IP:8080/
+
+        ServerName localhost
+  </VirtualHost>
+  // ###############################
+  -Save the file ctrl + x / Y / Enter
+  -service apache2 restart
+  -Test your server http://xxx.domain.com, you should see the node1 server in port 8080
+  -If everything is OK, check now the https://xxx.domain.com, you will se that is no reverse proxy on SSL. But is OK for now.
+  
+  ```
+  ### Reverse Proxy server Part3 ( with SSL )<br> 
+```js
+Config the Apache Reverse Proxy for https
+  -sudo nano 000-default-le-ssl.conf
+  -You will see the SSL certificates from Letsencrypt. DO NOT DELETE THEM.
+  -Your File should looks like this
+  // ###############################
+  
+  // ###############################
+  -Save the file ctrl + x / Y / Enter
+  -service apache2 restart
+  -Test your server https://xxx.domain.com, you should see the node1 server in port 8080, but secure with SSL 
+  -If everything is OK, Congratulation. WOW! you now have the Apache Reverse Proxy with Letsencrypt SSL!.
+  
+  Happy coding!. Bye
 ```
