@@ -3,7 +3,7 @@
 ### Digital Ocean Droplet<br>
 ```js
   -Enter DigitalOcean
-  -Ubuntu 16.10.4 x64
+  -Ubuntu 16.10 x64
   -5/mo
   -NY 3
   -hostname: Stun1
