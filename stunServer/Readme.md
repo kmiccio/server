@@ -20,4 +20,13 @@
   -terminal: reconnect to server -> shh root@Droplet_IP
   -test: stunclient Droplet_ip
     -Binding test: success
+    
+```
+### STUNTMAN DNS setup on Digital Ocean Droplet<br>
+```js
+  -Networking:
+  -Domains
+  -Create A record to Droplet_IP
+  -xxx.domain.com -> A -> Droplet_IP
+  
 ```
