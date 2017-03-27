@@ -142,7 +142,7 @@
   -Create Snapshot "Base-Janus"
   
 ```
-### Instal Apache, SSL & Reverse Proxy to Janus ports<br>
+### Instal Apache, Letsencrypt SSL<br>
 ```js
   -apt-get install apache2
   -cp -R /opt/janus-gateway/html/ /var/www/
@@ -170,7 +170,68 @@
   -You should see the Janus webpage but secure with SSL
   
   
+```
+### Apache localhost Reverse Proxy to Janus ports<br>
+```js
+  -aptitude update
+  -aptitude -y upgrade
+  -aptitude install -y build-essential
+  -aptitude install -y libapache2-mod-proxy-html libxml2-dev
+  -a2enmod
+    - ...wildcards : proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
+    
+  -cd /etc/apache2/sites-available/
+  -sudo cp 000-default.conf 000-default.conf.bak
+  -sudo nano 000-default.conf
+  -Delete everything and copy this
+  
+  // ###############################
+  <VirtualHost *:80>
+        ProxyPreserveHost On
+
+        ProxyPass / http://localhost:8088/
+        ProxyPassReverse / http://localhost:8088/
+
+        ServerName localhost
+  </VirtualHost>
+  // ###############################
+  -Save the file ctrl + x / Y / Enter
+  -service apache2 restart
+  -/opt/janus/bin/janus
+  -Test your server http://xxx.domain.com/janus/info => You should see a json response
+  
+  -For SSL, we will use the reverse proxy to janus on port 8088 insted of 8889 don't worry will be easy this way.
+  -sudo cp 000-default-le-ssl.conf 000-default-le-ssl.conf.bak
+  -sudo nano 000-default-le-ssl.conf
+  -You will see the SSL certificates from Letsencrypt. DO NOT DELETE THEM.
+  -Your File should looks like this
+  // ###############################
+  <IfModule mod_ssl.c>
+  <VirtualHost *:443>
+        SSLEngine On
+	ProxyPass / http://localhost:8088/
+        ProxyPassReverse / http://localhost:8088/
+
+    SSLCertificateFile /etc/letsencrypt/live/xxx.domain.com/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/xxx.domain.com/privkey.pem
+    Include /etc/letsencrypt/options-ssl-apache.conf
+    ServerName t
+    SSLCertificateChainFile /etc/letsencrypt/live/xxx.domain.com/chain.pem
+
+  </VirtualHost>
+  </IfModule>
+  
+  // ###############################
+  -Save the file ctrl + x / Y / Enter
+  -service apache2 restart
+  -/opt/janus/bin/janus
+  -Test your server https://xxx.domain.com, you should see the node1 server in port 8080, but secure with SSL 
+  -If everything is OK, Congratulation. WOW! you now have the Apache Reverse Proxy with Letsencrypt SSL!.
+  
+  Happy coding!. Bye
   
 ```
+
+
 
 
