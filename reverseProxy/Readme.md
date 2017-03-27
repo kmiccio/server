@@ -10,7 +10,7 @@
   -NY 3
   -hostname: Proxy1
 ```
-### Digital Ocean Droplet<br>
+### Install Letsencrypt on Digital Ocean Droplet<br>
 ```js
   -Networking:
   -Domains
