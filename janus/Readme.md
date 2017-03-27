@@ -138,7 +138,8 @@
 	-https://Droplet_IP:8089/janus/info
 	-You should see a json response
 	
-  - At this point everything is running and Janus was successfully installed
+  -At this point everything is running and Janus was successfully installed
+  -Create Snapshot "Base-Janus"
   
 ```
 ### Instal Apache, SSL & Reverse Proxy to Janus ports<br>
@@ -150,7 +151,26 @@
   -Open your Browser and Check:
   	-http://Droplet_IP
 	-You should see the Janus webpage.
-  -
+  
+  -sudo add-apt-repository ppa:certbot/certbot
+  -sudo apt-get update
+  -sudo apt-get install python-certbot-apache 
+    -Y
+  -certbot --apache
+  -On new Terminal Test ping before: ping xxx.domain.com should see the Droplet IP.
+  -enter your domain name: xxx.domain.com
+  -Your email
+  -A
+  -N
+  -1
+  -If everything goes all right: search for Congratulations! 
+  -Certificates are here: /etc/letsencrypt/live/xxx.domain.com/
+  
+  -Check your https://xxx.domain.com
+  -You should see the Janus webpage but secure with SSL
+  
+  
+  
 ```
 
 
