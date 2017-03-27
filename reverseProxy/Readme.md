@@ -121,8 +121,8 @@ Config the Apache Reverse Proxy for https
   <IfModule mod_ssl.c>
   <VirtualHost *:443>
         SSLEngine On
-        ProxyPass / http://45.55.138.132:8080/
-        ProxyPassReverse / http://45.55.138.132:8080/
+        ProxyPass / http://Node1_Droplet_IP:8080/
+        ProxyPassReverse / http://Node1_Droplet_IP:8080/
 
     SSLCertificateFile /etc/letsencrypt/live/xxx.domain.com/cert.pem
     SSLCertificateKeyFile /etc/letsencrypt/live/xxx.domain.com/privkey.pem
