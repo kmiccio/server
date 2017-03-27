@@ -8,7 +8,7 @@
   -NY 3
   -hostname: Stun1
 ```
-### Digital Ocean Droplet<br>
+### Install STUNTMAN on Digital Ocean Droplet<br>
 ```js
   -Get your pass, from email.
   -Terminal: shh root@Droplet_IP
