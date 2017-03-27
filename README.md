@@ -1,7 +1,7 @@
 # server
  My Digital Ocean Setup proyects</br>
- -Apache Reverse proxy => OK</br>
- -Janus server with Reverse proxy & SSL => OK</br>
+ -Apache Reverse Proxy => OK</br>
+ -Janus Server with Reverse Proxy & SSL => OK</br>
  -Stun Server => OK</br>
- -Auto Renew SSL certificates
+ -Auto Renew SSL Certificates
  
