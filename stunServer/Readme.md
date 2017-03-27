@@ -3,7 +3,7 @@
 ### Digital Ocean Droplet<br>
 ```js
   -Enter DigitalOcean
-  -Ubuntu 16.04.2 x64
+  -Ubuntu 16.10.4 x64
   -5/mo
   -NY 3
   -hostname: Stun1
@@ -16,7 +16,8 @@
   
   -sudo apt-get update
   -sudo apt-get install stuntman-server
-  -stunserver
+  -stunserver ( wait 10 MIN )
+  -terminal: reconnect to server -> shh root@Droplet_IP
   -test: stunclient Droplet_ip
     -Binding test: success
 ```
