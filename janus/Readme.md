@@ -130,12 +130,27 @@
 	-https://Droplet_IP:8089/janus/info
 	-You should see a json response
 	
+  -sudo ufw enable
+  -sudo ufw status
+  	-Status: active -> OK
+  -Open your Browser and Check again:
+  	-http://Droplet_IP:8088/janus/info
+	-https://Droplet_IP:8089/janus/info
+	-You should see a json response
+	
   - At this point everything is running and Janus was successfully installed
   
 ```
 ### Instal Apache, SSL & Reverse Proxy to Janus ports<br>
 ```js
-HELLO
+  -apt-get install apache2
+  -cp -R /opt/janus-gateway/html/ /var/www/
+  -cd /var/www/html/
+  -check if you copy the files: ls
+  -Open your Browser and Check:
+  	-http://Droplet_IP
+	-You should see the Janus webpage.
+  -
 ```
 
 
