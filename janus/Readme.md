@@ -200,7 +200,7 @@
   -/opt/janus/bin/janus
   -Test your server http://xxx.domain.com/janus/info => You should see a json response
   
-  -For SSL, we will use the reverse proxy to janus on port 8088 insted of 8889 don't worry will be easy this way.
+  -For SSL, we will use the reverse proxy to janus on port 8088 insted of 8889 dont worry will be easy this way.
   -sudo cp 000-default-le-ssl.conf 000-default-le-ssl.conf.bak
   -sudo nano 000-default-le-ssl.conf
   -You will see the SSL certificates from Letsencrypt. DO NOT DELETE THEM.
@@ -225,8 +225,8 @@
   -Save the file ctrl + x / Y / Enter
   -service apache2 restart
   -/opt/janus/bin/janus
-  -Test your server https://xxx.domain.com, you should see the node1 server in port 8080, but secure with SSL 
-  -If everything is OK, Congratulation. WOW! you now have the Apache Reverse Proxy with Letsencrypt SSL!.
+  -Test your server https://xxx.domain.com/janus/info => You should see a json response but secure with SSL! 
+  -If everything is OK, Congratulation. WOW! you now have the Apache Reverse Proxy with Letsencrypt SSL! for your Janus WebRTC Gateway, Cool!.
   
   Happy coding!. Bye
   
