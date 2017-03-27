@@ -91,5 +91,39 @@
     // ###################################
   -save file / ctrl + x / y / enter
   
+  -sudo ufw allow ssh
+  -sudo ufw allow http
+  -sudo ufw allow https
+  
+  -sudo ufw allow 8088/tcp
+  -sudo ufw allow 8088/udp
+
+  -sudo ufw allow 8089/tcp
+  -sudo ufw allow 8089/udp
+
+  -sudo ufw allow 8188/tcp
+  -sudo ufw allow 8188/udp
+  
+  -sudo ufw allow 8989/tcp
+  -sudo ufw allow 8989/udp
+
+  -sudo ufw allow 7188/tcp
+  -sudo ufw allow 7188/udp
+
+  -sudo ufw allow 7989/tcp
+  -sudo ufw allow 7989/udp
+
+  -sudo ufw allow 7088/tcp
+  -sudo ufw allow 7088/udp
+
+  -sudo ufw allow 7889/tcp
+  -sudo ufw allow 7889/udp
+
+  -sudo ufw disable
+  -sudo ufw status
+  	-Status: inactive -> OK
+	
+  -/opt/janus/bin/janus
+  
   
 ```
