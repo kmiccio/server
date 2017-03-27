@@ -16,4 +16,7 @@
   
   -sudo apt-get update
   -sudo apt-get install stuntman-server
+  -stunserver
+  -test: stunclient Droplet_ip
+    -Binding test: success
 ```
