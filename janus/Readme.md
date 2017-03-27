@@ -125,5 +125,17 @@
 	
   -/opt/janus/bin/janus
   
+  -Open your Browser and Check:
+  	-http://Droplet_IP:8088/janus/info
+	-https://Droplet_IP:8089/janus/info
+	-You should see a json response
+	
+  - At this point everything is running and Janus was successfully installed
   
 ```
+### Instal Apache, SSL & Reverse Proxy to Janus ports<br>
+```js
+HELLO
+```
+
+
