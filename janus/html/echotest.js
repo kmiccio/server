@@ -44,9 +44,9 @@
 //
 var server = null;
 if(window.location.protocol === 'http:')
-	server = "http://" + "janus.chilibeacon.com" + "/janus";
+	server = "http://" + "change_to_your_janus.domain.com" + "/janus";
 else
-	server = "https://" + "janus.chilibeacon.com" + "/janus";
+	server = "https://" + "change_to_your_janus.domain.com" + "/janus";
 
 var janus = null;
 var echotest = null;
