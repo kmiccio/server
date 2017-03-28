@@ -268,6 +268,11 @@
   -Check your https://xxx.domain.com
   -If everuthing goes OK, download the file to the server
   
+  cd /var/www/html
+  wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.html
+  wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.js
+  wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/janus.js
+  mkdir css
   
 ```
 
