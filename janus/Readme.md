@@ -266,13 +266,19 @@
   -Certificates are here: /etc/letsencrypt/live/xxx.domain.com/
   
   -Check your https://xxx.domain.com
-  -If everuthing goes OK, download the file to the server
+  -If everything goes OK, download these files to the server
   
-  cd /var/www/html
-  wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.html
-  wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.js
-  wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/janus.js
-  mkdir css
+  -cd /var/www/html
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.html
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.js
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/janus.js
+  -sudo mkdir css
+  -cd css
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/css/demo.css
+  -cd ..
+  -sudo nano echotest.js
+  	-search: change_to_your_janus.domain.com => and change it to your janus domain that point ip in your dns. remember that this domain s already with revery proxy with Letsencrypt Sll
+  -
   
 ```
 
