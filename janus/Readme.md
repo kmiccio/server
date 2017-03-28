@@ -17,7 +17,6 @@
   -Create A record to Droplet_IP
   -xxx.domain.com -> A -> Droplet_IP
   
-  
   -Get your pass, from email.
   -Terminal: shh root@Droplet_IP
   -Change Password
@@ -25,18 +24,48 @@
   -sudo apt-get update
   -sudo apt-get install aptitude
   -sudo aptitude install libmicrohttpd-dev libjansson-dev libnice-dev libssl-dev libsrtp-dev libsofia-sip-ua-dev libglib2.0-dev libopus-dev libogg-dev libcurl4-openssl-dev pkg-config gengetopt libtool automake make git cmake
+  -aptitude install -y build-essential
   -sudo apt-get install g++
   -sudo apt-get install golang
   -sudo aptitude install doxygen graphviz
   -sudo apt-get install libavformat-dev
+  -apt-get install -y erlang-nox erlang-dev erlang-src
   -sudo apt-get remove libsrtp0 libsrtp0-dev
   -sudo apt-get autoremove libsrtp0 libsrtp0-dev
+    
+  -sudo apt-get install make
+  -cd /opt
+  -wget https://www.openssl.org/source/openssl-1.0.2k.tar.gz
+  -tar -xzvf openssl-1.0.2k.tar.gz
+  -cd openssl-1.0.2k
+  -sudo ./config
+  -sudo make install
+  -sudo ln -sf /usr/local/ssl/bin/openssl `which openssl`
+  -openssl version -v
+  
+  -cd /
+  -git clone https://boringssl.googlesource.com/boringssl
+  -cd boringssl
+  -sed -i s/" -Werror"//g CMakeLists.txt
+  -mkdir -p build
+  -cd build
+  -cmake -DCMAKE_CXX_FLAGS="-lrt" ..
+  -make
+  -cd ..
+  # Install
+  -sudo mkdir -p /opt/boringssl
+  -sudo cp -R include /opt/boringssl/
+  -sudo mkdir -p /opt/boringssl/lib
+  -sudo cp build/ssl/libssl.a /opt/boringssl/lib/
+  -sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
   
   -cd /opt/
   -wget https://github.com/cisco/libsrtp/archive/v2.0.0.tar.gz
   -tar xfv v2.0.0.tar.gz
   -cd libsrtp-2.0.0
   -./configure --prefix=/usr --enable-openssl
+  // -./configure --prefix=/usr => ?? --enable-boringssl
+  // -./configure --prefix=/usr => ?? with nothing
   -make shared_library && sudo make install
   
   -cd /opt/
@@ -82,7 +111,7 @@
   -sudo nano janus.transport.http.cfg
     -chage this items:
     // ###################################
-      https = yes  // no => yes
+      	    https = yes  // no => yes
 	    secure_port = 8089  // Delete ;
 	    admin_http = yes // no => yes                         
 	    admin_port = 7088  // Delete ;
