@@ -231,6 +231,43 @@
   Happy coding!. Bye
   
 ```
+### Apache server for Janus examples<br>
+```js
+  -Enter DigitalOcean
+  -Create Droplet
+  -one click apps
+  -Ubuntu 14.04.5 x64 Lamp
+  -5/mo
+  -NY 3
+  -hostname: web1
+  
+  -Networking:
+  -Domains
+  -Create A record to Droplet_IP
+  -xxx.domain.com -> A -> Droplet_IP
+  
+  -Get your pass, from email.
+  -Terminal: shh root@Droplet_IP
+  -Change Password
+  
+  -sudo apt-get update
+  -sudo add-apt-repository ppa:certbot/certbot
+  -sudo apt-get update
+  -sudo apt-get install python-certbot-apache 
+    -Y
+  -certbot --apache
+  -On new Terminal Test ping before: ping xxx.domain.com should see the Droplet IP.
+  -enter your domain name: xxx.domain.com
+  -Your email
+  -A
+  -N
+  -1
+  -If everything goes all right: search for Congratulations! 
+  -Certificates are here: /etc/letsencrypt/live/xxx.domain.com/
+  
+  -Check your https://xxx.domain.com
+  -You should see the Janus webpage but secure with SSL
+```
 
 
 
