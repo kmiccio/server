@@ -266,7 +266,9 @@
   -Certificates are here: /etc/letsencrypt/live/xxx.domain.com/
   
   -Check your https://xxx.domain.com
-  -You should see the Janus webpage but secure with SSL
+  -If everuthing goes OK, download the file to the server
+  
+  
 ```
 
 
