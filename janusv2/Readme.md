@@ -25,7 +25,7 @@
   -sudo apt-get install aptitude
   -sudo aptitude install libmicrohttpd-dev libjansson-dev libnice-dev libssl-dev libsrtp-dev libsofia-sip-ua-dev libglib2.0-dev libopus-dev libogg-dev libcurl4-openssl-dev pkg-config gengetopt libtool automake make git cmake
   -aptitude install -y build-essential
-  -sudo apt-get install g++
+  // -sudo apt-get install g++
   -sudo apt-get install golang
   -sudo aptitude install doxygen graphviz
   -sudo apt-get install libavformat-dev
