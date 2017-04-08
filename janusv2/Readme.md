@@ -79,7 +79,7 @@
   
   	=> CREATE DROPLET IMAGE -> BASE
 ```	
-### Install Janus WebRTC Gateway on DigitalOcean.com PART1<br>
+### Install Janus WebRTC Gateway on DigitalOcean.com PART2<br>
 ```js
   -cd /opt	
   -git clone https://github.com/letsencrypt/letsencrypt	
