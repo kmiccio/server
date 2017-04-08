@@ -60,10 +60,6 @@
   -mkdir build && cd build/
   -cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_C_FLAGS="-fpic" -DLWS_SERVER_OPTION_DO_SSL_GLOBAL_INIT=ON ..
   -make && make install
-  // CHANGES: 
-  -git checkout v2.0-stable
-  -cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_C_FLAGS="-fpic" ..
-  to: -cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_C_FLAGS="-fpic" -DLWS_SERVER_OPTION_DO_SSL_GLOBAL_INIT=ON ..
 		   
   -cd /opt
   -git clone https://github.com/meetecho/janus-gateway.git
