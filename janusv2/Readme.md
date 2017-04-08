@@ -166,5 +166,8 @@
   ### START JANUS ###
   -/opt/janus/bin/janus
 
+  -Congratulation! At this point everything is running and Janus was successfully installed
+  
+  => CREATE DROPLET IMAGE -> BASE2
   
 ```
