@@ -121,10 +121,9 @@
   => CREATE DROPLET IMAGE -> BASE2
 
 ```
-  ### Install Janus WebRTC Gateway on DigitalOcean.com - PART3 (CHROME FIX)<br>
+  ### Install Janus WebRTC Gateway on DigitalOcean.com - PART3 (CHROME FAIL FIX)<br>
 ```js
 	
-  -CHROME FAIL FIX	
   -cd /
   -git clone https://boringssl.googlesource.com/boringssl
   -cd boringssl
