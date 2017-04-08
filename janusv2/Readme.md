@@ -112,8 +112,8 @@
   -/opt/janus/bin/janus
   
   -Open your Browser and Check:
-  	-http://Droplet_IP/janus/info
-	-https://Droplet_IP/janus/info
+  	-http://your_domain_xxx/janus/info
+	-https://your_domain_xxx/janus/info
 	-You should see a json response in both case, with secure SSL certificate.
 	
  -Congratulation! At this point everything is running and Janus was successfully installed
