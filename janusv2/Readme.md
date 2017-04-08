@@ -125,6 +125,9 @@
 	    port = 80 	
       	    https = yes  // no => yes
 	    secure_port = 443  // Delete ;
+	    
+	    cert_pem = /etc/letsencrypt/live/your_domain_xxx/cert.pem
+            cert_key = /etc/letsencrypt/live/your_domain_xxx/privkey.pem
     // ###################################
   -save file / ctrl + x / y / enter
   
@@ -135,5 +138,49 @@
   	-http://Droplet_IP/janus/info
 	-https://Droplet_IP/janus/info
 	-You should see a json response in both case, with secure SSL certificate.
+	
+  -CHROME FAIL FIX	
+  -cd /
+  -git clone https://boringssl.googlesource.com/boringssl
+  -cd boringssl
+  -sed -i s/" -Werror"//g CMakeLists.txt
+  -mkdir -p build
+  -cd build
+  -cmake -DCMAKE_CXX_FLAGS="-lrt" ..
+  -make
+  # Install
+  -cd ..
+  -sudo mkdir -p /opt/boringssl
+  -sudo cp -R include /opt/boringssl/
+  -sudo mkdir -p /opt/boringssl/lib
+  -sudo cp build/ssl/libssl.a /opt/boringssl/lib/
+  -sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
+
+  -cd /opt
+  -cd janus-gateway
+  -sh autogen.sh
+  -export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/boringssl/lib
+  -./configure --enable-boringssl --disable-data-channels --disable-rabbitmq --disable-mqtt --disable-docs --prefix=/opt/janus LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" CFLAGS="-I/usr/local/include"
+  -make clean && make install
+  -make configs
+
+  -cd /opt/janus/etc/janus/ 
+  -sudo nano janus.transport.http.cfg
+
+ -change this items:
+    // ###################################
+    	    http = yes
+	    port = 80 	
+      	    https = yes  // no => yes
+	    secure_port = 443  // Delete ;
+
+	    cert_pem = /etc/letsencrypt/live/your_domain_xxx/cert.pem
+            cert_key = /etc/letsencrypt/live/your_domain_xxx/privkey.pem
+    // ###################################
+  -save file / ctrl + x / y / enter
+  
+  ### START JANUS ###
+  -/opt/janus/bin/janus
+
   
 ```
