@@ -81,30 +81,31 @@
   -http://Your_Domain:8088/janus/info
   -You should see a json response
   
-  	= CREATE DROPLET IMAGE -> BASE
-  
-  ### TEST & START JANUS ###
+  	=> CREATE DROPLET IMAGE -> BASE
+	
+	
+	
+  -cd /opt	
+  -git clone https://github.com/letsencrypt/letsencrypt	
+  -cd letsencrypt
+  -./letsencrypt-auto --help
+  -On new Terminal Test ping before: ping xxx.domain.com should see the Droplet IP.
+  -./letsencrypt-auto certonly --standalone --email your@email -d yourdomain_or_subdomain
+  	-search for congratulations:
+	-Search for the directory: /etc/letsencrypt/live/your_domain.com/
+  -cd /etc/letsencrypt/live/your_domain.com/
+  -ls -> you should see: cert.pem  chain.pem  fullchain.pem  privkey.pem
+  -copy in a file this, you will need it later: 
+  	-/etc/letsencrypt/live/your_domain.com/cert.pem
+	-/etc/letsencrypt/live/your_domain.com/privkey.pem
   -cd /opt/janus/etc/janus/ 
-  
-  
-  
-  
-  
-  
   -sudo nano janus.transport.http.cfg
-    -chage this items:
+    -change this items:
     // ###################################
       	    https = yes  // no => yes
 	    secure_port = 8089  // Delete ;
-	    admin_http = yes // no => yes                         
-	    admin_port = 7088  // Delete ;
-	    admin_https = yes  // no => yes
-	    admin_secure_port = 7889 // Delete ;
     // ###################################
   -save file / ctrl + x / y / enter
-  
- 
-  -sudo ufw disable
  
   ### START JANUS ###
   -/opt/janus/bin/janus
@@ -112,17 +113,10 @@
   -Open your Browser and Check:
   	-http://Droplet_IP:8088/janus/info
 	-https://Droplet_IP:8089/janus/info
-	-You should see a json response
+	-You should see a json response in both case, with secure SSL certificate.
 	
-  -sudo ufw enable
-  -sudo ufw status
-  	-Status: active -> OK
-  -Open your Browser and Check again:
-  	-http://Droplet_IP:8088/janus/info
-	-https://Droplet_IP:8089/janus/info
-	-You should see a json response
-	
-  -At this point everything is running and Janus was successfully installed
-  -Create Snapshot "Base-Janus"
+  -Congratulation! At this point everything is running and Janus was successfully installed
+  
+  => CREATE DROPLET IMAGE -> BASE2
   
 ```
