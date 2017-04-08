@@ -31,9 +31,9 @@
   -sudo apt-get install libavformat-dev
   -apt-get install -y erlang-nox erlang-dev erlang-src
   -sudo apt-get remove libsrtp0 libsrtp0-dev
-  -sudo apt-get autoremove libsrtp0 libsrtp0-dev
+  // -sudo apt-get autoremove libsrtp0 libsrtp0-dev
     
-  -sudo apt-get install make
+  // -sudo apt-get install make
   -cd /opt
   -wget https://www.openssl.org/source/openssl-1.0.2k.tar.gz
   -tar -xzvf openssl-1.0.2k.tar.gz
