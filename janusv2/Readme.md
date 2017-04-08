@@ -10,7 +10,7 @@
   -hostname: Janus1
   
 ```
-### Install Janus WebRTC Gateway on DigitalOcean.com<br>
+### Install Janus WebRTC Gateway on DigitalOcean.com PART1<br>
 ```js
   -Networking:
   -Domains
@@ -82,7 +82,9 @@
   -You should see a json response
   
   	=> CREATE DROPLET IMAGE -> BASE
-	
+```	
+### Install Janus WebRTC Gateway on DigitalOcean.com PART1<br>
+```js
   -cd /opt	
   -git clone https://github.com/letsencrypt/letsencrypt	
   -cd letsencrypt
