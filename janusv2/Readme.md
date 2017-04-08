@@ -168,6 +168,6 @@
 
   -Congratulation! At this point everything is running and Janus was successfully installed
   
-  => CREATE DROPLET IMAGE -> BASE2
+  => CREATE DROPLET IMAGE -> BASE3
   
 ```
