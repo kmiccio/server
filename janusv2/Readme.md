@@ -83,8 +83,6 @@
   
   	=> CREATE DROPLET IMAGE -> BASE
 	
-	
-	
   -cd /opt	
   -git clone https://github.com/letsencrypt/letsencrypt	
   -cd letsencrypt
@@ -118,5 +116,24 @@
   -Congratulation! At this point everything is running and Janus was successfully installed
   
   => CREATE DROPLET IMAGE -> BASE2
+  
+  -cd /opt/janus/etc/janus/ 
+  -sudo nano janus.transport.http.cfg
+    -change this items:
+    // ###################################
+    	    http = yes
+	    port = 80 	
+      	    https = yes  // no => yes
+	    secure_port = 443  // Delete ;
+    // ###################################
+  -save file / ctrl + x / y / enter
+  
+  ### START JANUS ###
+  -/opt/janus/bin/janus
+  
+  -Open your Browser and Check:
+  	-http://Droplet_IP/janus/info
+	-https://Droplet_IP/janus/info
+	-You should see a json response in both case, with secure SSL certificate.
   
 ```
