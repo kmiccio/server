@@ -10,7 +10,7 @@
   -hostname: Janus1
   
 ```
-### Install Janus WebRTC Gateway on DigitalOcean.com PART1<br>
+### Install Janus WebRTC Gateway on DigitalOcean.com - PART1<br>
 ```js
   -Networking:
   -Domains
@@ -79,7 +79,7 @@
   
   	=> CREATE DROPLET IMAGE -> BASE
 ```	
-### Install Janus WebRTC Gateway on DigitalOcean.com PART2<br>
+### Install Janus WebRTC Gateway on DigitalOcean.com - PART2 (SSL)<br>
 ```js
   -cd /opt	
   -git clone https://github.com/letsencrypt/letsencrypt	
@@ -94,27 +94,6 @@
   -copy in a file this, you will need it later: 
   	-/etc/letsencrypt/live/your_domain.com/cert.pem
 	-/etc/letsencrypt/live/your_domain.com/privkey.pem
-  -cd /opt/janus/etc/janus/ 
-  -sudo nano janus.transport.http.cfg
-    -change this items:
-    // ###################################
-      	    https = yes  // no => yes
-	    secure_port = 8089  // Delete ;
-    // ###################################
-  -save file / ctrl + x / y / enter
- 
-  ### START JANUS ###
-  -/opt/janus/bin/janus
-  
-  -Open your Browser and Check:
-  	-http://Droplet_IP:8088/janus/info
-	-https://Droplet_IP:8089/janus/info
-	-You should see a json response in both case, with secure SSL certificate.
-	
-  -Congratulation! At this point everything is running and Janus was successfully installed
-  
-  => CREATE DROPLET IMAGE -> BASE2
-  
   -cd /opt/janus/etc/janus/ 
   -sudo nano janus.transport.http.cfg
     -change this items:
@@ -136,6 +115,14 @@
   	-http://Droplet_IP/janus/info
 	-https://Droplet_IP/janus/info
 	-You should see a json response in both case, with secure SSL certificate.
+	
+ -Congratulation! At this point everything is running and Janus was successfully installed
+  
+  => CREATE DROPLET IMAGE -> BASE2
+
+```
+  ### Install Janus WebRTC Gateway on DigitalOcean.com - PART3 (CHROME FIX)<br>
+```js
 	
   -CHROME FAIL FIX	
   -cd /
