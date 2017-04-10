@@ -254,6 +254,20 @@
 		-restart janus
 		-quit
 		
+  -sudo ufw allow 9001/tcp
+  -sudo nano /etc/supervisor/supervisord.conf
+  -add this lines
+      // ###################################
+	[inet_http_server]
+	port = 9001
+	username = admin
+	password = your_password
+    // ###################################
+   -service supervisor restart
+   -Open your Browser and Check:
+  	-http://your_domain_xxx:9001
+	-Write your user/password and then You should see the supervisor status web server! COOL!
+  
   -Congratulation! At this point everything is running and Janus was successfully installed, secure and Daemonized
 ```
 
