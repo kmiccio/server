@@ -208,12 +208,34 @@
   -sudo ufw status
   	-Status: active -> OK
 
-   -Open your Browser and Check:
+  -Open your Browser and Check:
   	-http://your_domain_xxx/janus/info
 	-https://your_domain_xxx/janus/info
 	-You should see a json response in both case, with secure SSL certificate.
 	
- -Congratulation! At this point everything is running and Janus was successfully installed and secure
+  -Congratulation! At this point everything is running and Janus was successfully installed and secure
   
   => CREATE DROPLET IMAGE -> BASE4
 ```
+
+  ### Daemonize your Janus WebRTC Gateway on DigitalOcean.com - PART5 (RUN IT AS A SERVICE)<br>
+```js
+  -apt-get install supervisor
+  -check the installation: service supervisor restart
+  -sudo nano /etc/supervisor/conf.d/janus.conf
+  -copy this items:
+    // ###################################
+    	[program:janus]
+	command=/opt/janus/bin/janus
+	user=root
+	autostart=true
+	autorestart=true
+	stderr_logfile=/var/log/janus.err.log
+	stdout_logfile=/var/log/janus.out.log
+    // ###################################
+  -save file / ctrl + x / y / enter
+  
+
+```
+
+
