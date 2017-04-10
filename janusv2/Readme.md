@@ -270,5 +270,61 @@
   
   -Congratulation! At this point everything is running and Janus was successfully installed, secure and Daemonized
 ```
+### Apache server for Janus examples<br>
+```js
+  -Enter DigitalOcean
+  -Create Droplet
+  -one click apps
+  -Ubuntu 14.04.5 x64 Lamp
+  -5/mo
+  -NY 3
+  -hostname: web1
+  
+  -Networking:
+  -Domains
+  -Create A record to Droplet_IP
+  -xxx.domain.com -> A -> Droplet_IP
+  
+  -Get your pass, from email.
+  -Terminal: shh root@Droplet_IP
+  -Change Password
+  
+  -sudo apt-get update
+  -sudo add-apt-repository ppa:certbot/certbot
+  -sudo apt-get update
+  -sudo apt-get install python-certbot-apache 
+    -Y
+  -certbot --apache
+  -On new Terminal Test ping before: ping xxx.domain.com should see the Droplet IP.
+  -enter your domain name: xxx.domain.com
+  -Your email
+  -A
+  -N
+  -1
+  -If everything goes all right: search for Congratulations! 
+  -Certificates are here: /etc/letsencrypt/live/xxx.domain.com/
+  
+  -Check your https://xxx.domain.com
+  -If everything goes OK, download these files to the server
+  
+  -cd /var/www/html
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.html
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/echotest.js
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/janus.js
+  -sudo mkdir css
+  -cd css
+  -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/css/demo.css
+  -cd ..
+  -sudo nano echotest.js
+  	-search: => change_to_your_janus.domain.com => 
+  -Test your web server + janus server => https://xxx.domain.com/echotest.html
+  -You should see the janus echo test example with secure SSL certificate.
+  -If everything goes OK, you will see your video + audio in your screen.
+  
+  -Congratulation! At this point everything is running and Janus was successfully installed, secure, Daemonized with apache server serving your app.
+  
+  -Now just code your app. Happy coding!
+  
+```
 
 
