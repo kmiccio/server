@@ -253,6 +253,8 @@
 		-start janus
 		-restart janus
 		-quit
+		
+  -Congratulation! At this point everything is running and Janus was successfully installed, secure and Daemonized
 ```
 
 
