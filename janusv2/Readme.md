@@ -270,7 +270,7 @@
   
   -Congratulation! At this point everything is running and Janus was successfully installed, secure and Daemonized
 ```
-### Apache server for Janus examples<br>
+### Apache server for Janus examples - PART6 ( APACHE SERVER FOR EXAMPLES )<br>
 ```js
   -Enter DigitalOcean
   -Create Droplet
