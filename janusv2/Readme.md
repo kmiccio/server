@@ -235,7 +235,24 @@
     // ###################################
   -save file / ctrl + x / y / enter
   
-
+  -supervisorctl reread
+  -supervisorctl update
+  
+  -sudo shutdown -r now
+  
+  -supervisorctl
+  	-status => you should see JANUS -> RUNNING
+  
+  // OPTIONAL 
+        -tail /var/log/janus.out.log
+   	-supervisorctl
+   		-status
+   		-tail janus 
+  		-tail janus stderr
+		-stop janus
+		-start janus
+		-restart janus
+		-quit
 ```
 
 
