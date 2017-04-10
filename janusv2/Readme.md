@@ -171,3 +171,49 @@
   => CREATE DROPLET IMAGE -> BASE3
   
 ```
+  ### Secure your Janus WebRTC Gateway on DigitalOcean.com - PART4 (FIREWALL)<br>
+```js
+
+  -sudo ufw default deny incoming
+  -sudo ufw default allow outgoing
+  -sudo ufw allow ssh
+  -sudo ufw allow http
+  -sudo ufw allow https
+  // Optional depend on your configuration
+  	// -sudo ufw allow 8088/tcp
+  	// -sudo ufw allow 8088/udp
+
+  	// -sudo ufw allow 8089/tcp
+  	// -sudo ufw allow 8089/udp
+
+  	// -sudo ufw allow 8188/tcp
+  	// -sudo ufw allow 8188/udp
+  
+  	// -sudo ufw allow 8989/tcp
+  	// -sudo ufw allow 8989/udp
+
+  	// -sudo ufw allow 7188/tcp
+  	// -sudo ufw allow 7188/udp
+
+  	// -sudo ufw allow 7989/tcp
+  	// -sudo ufw allow 7989/udp
+
+  	// -sudo ufw allow 7088/tcp
+  	// -sudo ufw allow 7088/udp
+
+  	// -sudo ufw allow 7889/tcp
+  	// -sudo ufw allow 7889/udp
+	
+  -sudo ufw enable
+  -sudo ufw status
+  	-Status: active -> OK
+
+   -Open your Browser and Check:
+  	-http://your_domain_xxx/janus/info
+	-https://your_domain_xxx/janus/info
+	-You should see a json response in both case, with secure SSL certificate.
+	
+ -Congratulation! At this point everything is running and Janus was successfully installed and secure
+  
+  => CREATE DROPLET IMAGE -> BASE4
+```
