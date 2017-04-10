@@ -316,7 +316,7 @@
   -wget https://raw.githubusercontent.com/kmiccio/server/master/janus/html/css/demo.css
   -cd ..
   -sudo nano echotest.js
-  	-search: => change_to_your_janus.domain.com => 
+  	-search: => change_to_your_janus.domain.com => and change this for your janus domain server.
   -Test your web server + janus server => https://xxx.domain.com/echotest.html
   -You should see the janus echo test example with secure SSL certificate.
   -If everything goes OK, you will see your video + audio in your screen.
