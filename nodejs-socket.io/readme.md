@@ -93,7 +93,7 @@
       }
 
       io.on('connection', function (socket) {
-        socket.emit('news', { hello: 'world' });
+        socket.emit('news', { hello: 'Hello world' });
         socket.on('my other event', function (data) {
           console.log(data);
         });
@@ -101,20 +101,35 @@
       
       ####################
   -Save the file ctrl + x / Y / Enter
-  -
+  Now add an index.html
+  -sudo nano index.html and add this
   
-  <html>
-  <head>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io('http://localhost');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-</script>
-</head>
-  <body></body>
-</html>
+      ####################
+      <html>
+      <head>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        var socket = io('http://your_droplet_ip:5000');
+        socket.on('news', function (data) {
+          console.log(data);
+          document.body.innerHTML=data.hello;
+          socket.emit('my other event', { my: 'data' });
+        });
+      </script>
+      </head>
+        <body></body>
+      </html>
+      ####################
+    -Save the file ctrl + x / Y / Enter
+    -node socket.js
+    -test your NodeJS+Socket.io server: Enter to: http://your_droplet_ip:5000
+    -You shuold see Hello world, from a message coming from the sokcet.io server injected in the  body tag.
+      
+    Congratulation! you have node and socket.io running perfectly.
+      
+      
+ 
+  
+  
   
 ```
