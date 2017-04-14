@@ -1,4 +1,4 @@
-# Install NodeJS & Socket.io<br>on DigitalOcean.com
+# Install NodeJS & Socket.io on DigitalOcean.com
 
 ### Digital Ocean Droplet<br>
 ```js
@@ -126,10 +126,12 @@
     -You shuold see Hello world, from a message coming from the sokcet.io server injected in the  body tag.
       
     Congratulation! you have node and socket.io running perfectly.
-      
-      
- 
-  
-  
-  
+
 ```
+# Running NodeJS & Socket.io with SSL
+
+```js
+
+```
+
+
