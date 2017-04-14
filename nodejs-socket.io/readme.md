@@ -71,7 +71,6 @@
   -sudo npm install -g socket.io
   -sudo nano socket.js
   -test your socket.io server, add this to socket.js
-  
       ####################
       var app = require('http').createServer(handler)
       var io = require('socket.io')(app);
@@ -103,7 +102,6 @@
   -Save the file ctrl + x / Y / Enter
   Now add an index.html
   -sudo nano index.html and add this
-  
       ####################
       <html>
       <head>
@@ -135,41 +133,86 @@
     -Domains
     -Create A record to Droplet_IP
     -xxx.domain.com -> A -> Droplet_IP
+    -test your NodeJS+Socket.io server: Enter to: http://your.domain.xxx:5000
+    -You shuold see Hello world, from a message coming from the sokcet.io server injected in the  body tag, but instead of enter directly by the Ip you reach your server by your domain. But no SSL yet...
     
-  -cd /opt	
+  -cd /opt
+  -apt-get install git
   -git clone https://github.com/letsencrypt/letsencrypt	
   -cd letsencrypt
   -./letsencrypt-auto --help
   -On new Terminal Test ping before: ping xxx.domain.com should see the Droplet IP.
   -./letsencrypt-auto certonly --standalone --email your@email -d yourdomain_or_subdomain
   	-search for congratulations:
-	-Search for the directory: /etc/letsencrypt/live/your_domain.com/
-  -cd /etc/letsencrypt/live/your_domain.com/
+	-Search for the directory: /etc/letsencrypt/live/your.domain.xxx/
+  -cd /etc/letsencrypt/live/your.domain.xxx/
   -ls -> you should see: cert.pem  chain.pem  fullchain.pem  privkey.pem
   -copy in a file this, you will need it later: 
-  	-/etc/letsencrypt/live/your_domain.com/cert.pem
-	  -/etc/letsencrypt/live/your_domain.com/privkey.pem
+  	-/etc/letsencrypt/live/your.domain.xxx/cert.pem
+	  -/etc/letsencrypt/live/your.domain.xxx/privkey.pem
     
-    
-    
-    
-    
-    
-var options = {
-    key: fs.readFileSync('/home/certificates.key'),
-    cert: fs.readFileSync('/home/certificates.crt'),
-    requestCert: true
-};
-var server = require('https').createServer(options, app);
-var io = require('socket.io').listen(server);
-server.listen(8000);
-console.log('Server started at port: 8000');
+  -Now we gone a make some tweak to our code, to get SSL working with socket.io, Do the following
+  -sudo nano socket.js and copy this
+      ####################
+	var fs = require('fs');
 
-var socket = io.connect('example.com:8000', {secure: true});
+	var options = {
+	    key: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/privkey.pem'),
+	    cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
+	    requestCert: true
+	};
 
+	var app = require('https').createServer(options, handler)
+	var io = require('socket.io')(app);
 
+	app.listen(5000);
 
+	function handler (req, res) {
+	  fs.readFile(__dirname + '/index.html',
+	  function (err, data) {
+	    if (err) {
+	      res.writeHead(500);
+	      return res.end('Error loading index.html');
+	    }
 
+	    res.writeHead(200);
+	    res.end(data);
+	  });
+	}
+
+	io.on('connection', function (socket) {
+	  socket.emit('news', { hello: 'hello world' });
+	  socket.on('my other event', function (data) {
+	    console.log(data);
+	  });
+	});
+      ####################
+  -Save the file ctrl + x / Y / Enter
+  -sudo nano index.html and change your code to this.
+      ####################
+      	<html>
+	<head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io('https://your.domain.xxx:5000', {secure: true});
+	  socket.on('news', function (data) {
+		console.log(data);
+		document.body.innerHTML=data.hello;
+		socket.emit('my other event', { my: 'data' });
+	  });
+	</script>
+	</head>
+	  <body></body>
+	</html>
+      ####################
+  -Save the file ctrl + x / Y / Enter
+  
+  -Finally test your NodeJS + Socket.io server with SSL enter to: https://your.domain.xxx:5000
+  -You shuold see Hello world, from a message coming from the sokcet.io server injected in the body tag but with SSL encryption.
+      
+  Congratulation! you have node and socket.io running perfectly and Secure.
+  Happy coding!
+  
 ```
 
 
