@@ -55,8 +55,11 @@
    
   -Save the file ctrl + x / Y / Enter
   -sudo ufw disable
+  -node server.js
   -From another terminal window: telnet droplet_ip 5000, if everything goes alright, you should see a welcome message, now type something to see it in the console of your nodejs server.
+  -Control + c ( exit from NodeJS )
   -sudo ufw allow 5000/tcp
   -sudo ufw enable
+  -node server.js
   -Test Again.
 ```
