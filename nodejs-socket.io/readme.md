@@ -14,6 +14,7 @@
 ```js
   -sudo apt-get update
   -curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+      // https://nodejs.org/es/download/package-manager/#debian-and-ubuntu-based-linux-distributions fro latest NodeJS version 
   -sudo apt-get install -y build-essential
   -sudo apt-get install -y nodejs
   -cd /
@@ -62,4 +63,58 @@
   -sudo ufw enable
   -node server.js
   -Test Again.
+```
+# Install Socket.io
+
+```js
+  -cd /node
+  -sudo npm install -g socket.io
+  -sudo nano socket.js
+  -test your socket.io server, add this to socket.js
+  
+      ####################
+      var app = require('http').createServer(handler)
+      var io = require('socket.io')(app);
+      var fs = require('fs');
+
+      app.listen(5000);
+
+      function handler (req, res) {
+        fs.readFile(__dirname + '/index.html',
+        function (err, data) {
+          if (err) {
+            res.writeHead(500);
+            return res.end('Error loading index.html');
+          }
+
+          res.writeHead(200);
+          res.end(data);
+        });
+      }
+
+      io.on('connection', function (socket) {
+        socket.emit('news', { hello: 'world' });
+        socket.on('my other event', function (data) {
+          console.log(data);
+        });
+      });
+      
+      ####################
+  -Save the file ctrl + x / Y / Enter
+  -
+  
+  <html>
+  <head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
+</head>
+  <body></body>
+</html>
+  
 ```
