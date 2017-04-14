@@ -131,7 +131,47 @@
 # Running NodeJS & Socket.io with SSL
 
 ```js
+  -Networking:
+    -Domains
+    -Create A record to Droplet_IP
+    -xxx.domain.com -> A -> Droplet_IP
+    
+  -cd /opt	
+  -git clone https://github.com/letsencrypt/letsencrypt	
+  -cd letsencrypt
+  -./letsencrypt-auto --help
+  -On new Terminal Test ping before: ping xxx.domain.com should see the Droplet IP.
+  -./letsencrypt-auto certonly --standalone --email your@email -d yourdomain_or_subdomain
+  	-search for congratulations:
+	-Search for the directory: /etc/letsencrypt/live/your_domain.com/
+  -cd /etc/letsencrypt/live/your_domain.com/
+  -ls -> you should see: cert.pem  chain.pem  fullchain.pem  privkey.pem
+  -copy in a file this, you will need it later: 
+  	-/etc/letsencrypt/live/your_domain.com/cert.pem
+	  -/etc/letsencrypt/live/your_domain.com/privkey.pem
+    
+    
+    
+    
+    
+    
+var options = {
+    key: fs.readFileSync('/home/certificates.key'),
+    cert: fs.readFileSync('/home/certificates.crt'),
+    requestCert: true
+};
+var server = require('https').createServer(options, app);
+var io = require('socket.io').listen(server);
+server.listen(8000);
+console.log('Server started at port: 8000');
+
+var socket = io.connect('example.com:8000', {secure: true});
+
+
+
 
 ```
+
+
 
 
