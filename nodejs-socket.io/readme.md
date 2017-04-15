@@ -158,7 +158,9 @@
 
 	var options = {
 	    key: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/privkey.pem'),
-	    cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
+	    // cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
+	    // Fullchain is need it if you use web sockets, Full chain solve the Chrome Mobile Problem
+	    cert: fs.readFileSync('/etc/letsencrypt/live/node.chilibeacon.com/fullchain.pem'),
 	    requestCert: true
 	};
 
