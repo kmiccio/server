@@ -8,7 +8,7 @@
 	- 0 * * * * ./opt/letsencrypt/certbot-auto renew --dry-run --quiet --no-self-upgrade
   -save: ctrl + x / y / Enter
   
-  Congrats, you don't need to worry about certificates anymore, they will auto renew.
+  Congrats, you dont need to worry about certificates anymore, they will auto renew.
   happy coding!
   
 ```
