@@ -252,7 +252,13 @@
   -Save the file ctrl + x / Y / Enter
 
 ```
-# Daemonize your Socket.io - PART5 (RUN IT AS A SERVICE)
+# # Socket.io SSL Fix for Android's Chrome
+
+```js
+
+```
+
+# Daemonize your Socket.io - (RUN IT AS A SERVICE)
 
 ```js
 
