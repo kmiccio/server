@@ -252,7 +252,66 @@
   -Save the file ctrl + x / Y / Enter
 
 ```
+# Daemonize your Socket.io - PART5 (RUN IT AS A SERVICE)
 
+```js
+
+  -apt-get install supervisor
+  -check: service supervisor restart
+  	-> You should see: Restarting supervisor: supervisord.
+  -sudo nano /etc/supervisor/conf.d/name_of_your_service.conf
+  -Copy and paste the following code:
+  	-> NOTE: NO ADD ANY SPACE AT THE BIGINNING OF THE FILE.
+  #####################################
+	[program:name_of_your_service]
+	command=node /node/name_of_your_service.js
+	user=root
+	autostart=true
+	autorestart=true
+	environment=NODE_ENV=production
+	stderr_logfile=/var/log/name_of_your_service.err.log
+	stdout_logfile=/var/log/name_of_your_service.out.log
+  #####################################
+  -Save the file ctrl + x / Y / Enter
+
+  -supervisorctl reread
+  -supervisorctl update
+  
+  -sudo shutdown -r now
+  
+  -supervisorctl
+  	-status => you should see name_of_your_service -> RUNNING
+  
+  // OPTIONAL 
+        -tail /var/log/name_of_your_service.out.log
+   	-supervisorctl
+   		-status
+   		-tail name_of_your_service 
+  		-tail name_of_your_service stderr
+		-stop name_of_your_service
+		-start name_of_your_service
+		-restart name_of_your_service
+		-quit
+		
+  -sudo ufw allow 9001/tcp
+  -sudo nano /etc/supervisor/supervisord.conf
+  -add this lines
+      // ###################################
+	[inet_http_server]
+	port = 9001
+	username = admin
+	password = your_password
+    // ###################################
+   -Save the file ctrl + x / Y / Enter
+   -service supervisor restart
+   -Open your Browser and Check:
+  	-http://your_domain_xxx:9001
+	-Write your user/password and then You should see the supervisor status web server! COOL!
+  
+  -Congratulation! At this point everything is running and Socket.io service was successfully installed, secure and Daemonized
+  Happy coding!
+
+```
 
 
 
