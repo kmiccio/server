@@ -216,6 +216,42 @@
   Happy coding!
   
 ```
+# Socket.io service only ( NO HTML )
+
+```js
+
+-sudo nano socket.js and copy this
+      ####################
+	var fs = require('fs');
+
+	var options = {
+	    key: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/privkey.pem'),
+	    // cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
+	    // Fullchain is need it if you use web sockets, Full chain solve the Chrome Mobile Problem
+	    cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/fullchain.pem'),
+	    requestCert: true
+	};
+
+	var app = require('https').createServer(options, handler)
+	var io = require('socket.io')(app);
+
+	app.listen(5000);
+
+	function handler (req, res) {
+	    res.writeHead(200);
+	    res.end();
+	}
+
+	io.on('connection', function (socket) {
+	  socket.emit('news', { hello: 'hello world' });
+	  socket.on('my other event', function (data) {
+	    console.log(data);
+	  });
+	});
+      ####################
+  -Save the file ctrl + x / Y / Enter
+
+```
 
 
 
