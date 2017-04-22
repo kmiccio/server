@@ -12,3 +12,9 @@
   happy coding!
   
 ```
+### Get Expirate day of SSL certicate
+```js
+  -Get the days
+  -apt-get install ssl-cert-check
+  -ssl-cert-check -c /etc/letsencrypt/live/your.domain.xxx/cert.pem
+```
