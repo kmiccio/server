@@ -1,0 +1,4 @@
+Remove plugins we dont use:
+plugins folder: /usr/lib64/janus/plugins
+
+admins password protector
