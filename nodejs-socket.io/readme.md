@@ -152,6 +152,7 @@
 	  -/etc/letsencrypt/live/your.domain.xxx/privkey.pem
     
   -Now we gone a make some tweak to our code, to get SSL working with socket.io, Do the following
+  -cd /node
   -sudo nano socket.js and copy this
       ####################
 	var fs = require('fs');
@@ -219,16 +220,17 @@
 # Socket.io service only ( NO HTML )
 
 ```js
-
+-cd /node
 -sudo nano socket.js and copy this
       ####################
 	var fs = require('fs');
 
 	var options = {
 	    key: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/privkey.pem'),
-	    // cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
-	    // Fullchain is need it if you use web sockets, Full chain solve the Chrome Mobile Problem
-	    cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/fullchain.pem'),
+	    cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
+	    // Fullchain is need it if you use web sockets, Full chain solve the Chrome Mobile Problem, use fullchain intead of cert.com
+	    // if not work see next chapter
+	    // cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/fullchain.pem'),
 	    requestCert: true
 	};
 
@@ -255,7 +257,17 @@
 # # Socket.io SSL Fix for Android's Chrome
 
 ```js
-
+  -If you get a pop up asking for certificate in Chrome Mobile
+  -change your ssj option inside your socket.js
+  -cd /node
+  -sudo nano socket.js and change this
+      ####################
+      	var options = {
+    		key: fs.readFileSync('/etc/letsencrypt/live/your.domain.xxx/privkey.pem'),
+    		cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.xxx/cert.pem'),
+    		ca: fs.readFileSync('/etc/letsencrypt/live/your.domain.xxx/chain.pem')
+	};
+      ####################
 ```
 
 # Daemonize your Socket.io - (RUN IT AS A SERVICE)
