@@ -258,7 +258,7 @@
 
 ```js
   -If you get a pop up asking for certificate in Chrome Mobile
-  -change your ssj option inside your socket.js
+  -change your SSL option inside your socket.js
   -cd /node
   -sudo nano socket.js and change this
       ####################
@@ -268,6 +268,7 @@
     		ca: fs.readFileSync('/etc/letsencrypt/live/your.domain.xxx/chain.pem')
 	};
       ####################
+  -Your ready to go :)
 ```
 
 # Daemonize your Socket.io - (RUN IT AS A SERVICE)
