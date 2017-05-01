@@ -227,10 +227,10 @@
 
 	var options = {
 	    key: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/privkey.pem'),
-	    cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
-	    // Fullchain is need it if you use web sockets, Full chain solve the Chrome Mobile Problem, use fullchain intead of cert.com
-	    // if not work see next chapter
-	    // cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/fullchain.pem'),
+	    // cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/cert.pem'),
+	    // Fullchain is need it if you use web sockets, Full chain solve the Chrome Mobile Problem, use fullchain intead of cert.pem
+	    // if not work and still ask you for a certificate see next chapter
+	    cert: fs.readFileSync('/etc/letsencrypt/live/your.domain.com/fullchain.pem'),
 	    requestCert: true
 	};
 
