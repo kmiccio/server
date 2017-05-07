@@ -326,5 +326,40 @@
   -Now just code your app. Happy coding!
   
 ```
+### Add Node & Socket.io for signaling - PART7<br>
+```js
+part 7
+  -sudo apt-get update
+  -curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+      // https://nodejs.org/es/download/package-manager/#debian-and-ubuntu-based-linux-distributions fro latest NodeJS version 
+  -sudo apt-get install -y build-essential
+  -sudo apt-get install -y nodejs
+  -cd /
+  -sudo mkdir node
+  -cd /node
+  -sudo npm install socket.io
+  -sudo nano your_server.js
+	… add your server code, remember chrome fix for mobile
+	
+  -sudo nano /etc/supervisor/conf.d/name_of_your_service.conf
+  -Copy and paste the following code:
+  	-> NOTE: NO ADD ANY SPACE AT THE BIGINNING OF THE FILE.
+  #####################################
+	[program:name_of_your_service]
+	command=node /node/name_of_your_service.js
+	user=root
+	autostart=true
+	autorestart=true
+	environment=NODE_ENV=production
+	stderr_logfile=/var/log/name_of_your_service.err.log
+	stdout_logfile=/var/log/name_of_your_service.out.log
+  #####################################
+  -Save the file ctrl + x / Y / Enter
 
+  -supervisorctl reread
+  -supervisorctl update
 
+  -supervisorctl
+  	-status => you should see name_of_your_service -> RUNNING
+
+```
