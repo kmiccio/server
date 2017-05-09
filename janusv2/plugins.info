@@ -2,3 +2,18 @@ Remove plugins we dont use:
 plugins folder: /usr/lib64/janus/plugins
 
 admins password protector
+
+create channels ( AudioBridge ) 
+  -cd /opt/janus/etc/janus
+  -sudo nano janus.plugin.audiobridge.cfg
+  -copy this items:
+    // ###################################
+		[0000001]
+		description = Other Room
+		secret = adminpwd
+		sampling_rate = 16000
+		record = false
+		;record_file = /path/to/recording.wav
+    // ###################################
+  -restart with supervisor ( HTTP service )  
+
