@@ -12,6 +12,18 @@
   happy coding!
   
 ```
+### Auto renew manual
+```js
+
+  -cd /opt
+  -cd /letsencrypt
+  ./letsencrypt-auto certonly --standalone --email name@domain -d name.domain.com
+
+ 
+  Congrats, you dont need to worry about certificates anymore, they will auto renew.
+  happy coding!
+  
+```
 ### Get Expirate day of SSL certicate
 ```js
   -Get the days
